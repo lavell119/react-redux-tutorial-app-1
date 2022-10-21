@@ -13,7 +13,16 @@ class App extends Component {
 //Add Ninja function
   addNinja = (ninja) => {
     ninja.id = Math.random()
+    //Always set state inside of 'setState'
     let ninjas =  [...this.state.ninjas, ninja]
+    this.setState({
+      ninjas: ninjas
+    })
+  }
+  deleteNinja = (id) => {
+    let ninjas = this.state.ninjas.filter(ninja => {
+      return ninja.id !== id
+    })
     this.setState({
       ninjas: ninjas
     })
@@ -23,7 +32,7 @@ class App extends Component {
     <div className="App">
       <h1>My App</h1>
       <p>Welcome</p>
-      <Ninjas ninjas={this.state.ninjas}/>  
+      <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/>  
       <AddNinja addNinja = {this.addNinja}/>   
     </div>
   )
