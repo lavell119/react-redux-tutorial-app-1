@@ -12,7 +12,7 @@ const Ninjas = (props) => {
             </div>
             )
         })
-        return(
+        return (
             <div className="ninja-list">
                 { ninjaList }
             </div>
